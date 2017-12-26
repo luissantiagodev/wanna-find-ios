@@ -1,0 +1,6 @@
+framework module Pods_WannaFind {
+  umbrella header "Pods-WannaFind-umbrella.h"
+
+  export *
+  module * { export * }
+}

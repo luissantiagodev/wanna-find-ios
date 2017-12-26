@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		991CCC4D117D7AFEFFA22E77 /* Pods_WannaFind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF23EA63765664E7C76D9DC /* Pods_WannaFind.framework */; };
 		B80AD8A81FF2DF6200920081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80AD8A71FF2DF6200920081 /* AppDelegate.swift */; };
 		B80AD8AA1FF2DF6200920081 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80AD8A91FF2DF6200920081 /* ViewController.swift */; };
 		B80AD8AD1FF2DF6200920081 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B80AD8AB1FF2DF6200920081 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F59E95CF867F8ED0A3111E8 /* Pods-WannaFind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannaFind.release.xcconfig"; path = "Pods/Target Support Files/Pods-WannaFind/Pods-WannaFind.release.xcconfig"; sourceTree = "<group>"; };
+		5BF23EA63765664E7C76D9DC /* Pods_WannaFind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WannaFind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFC823B82A680F157ADF0002 /* Pods-WannaFind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannaFind.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WannaFind/Pods-WannaFind.debug.xcconfig"; sourceTree = "<group>"; };
 		B80AD8A41FF2DF6200920081 /* WannaFind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WannaFind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80AD8A71FF2DF6200920081 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B80AD8A91FF2DF6200920081 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				991CCC4D117D7AFEFFA22E77 /* Pods_WannaFind.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28BAA32CF0CB4BFCD036F841 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BF23EA63765664E7C76D9DC /* Pods_WannaFind.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B80AD89B1FF2DF6200920081 = {
 			isa = PBXGroup;
 			children = (
 				B80AD8A61FF2DF6200920081 /* WannaFind */,
 				B80AD8A51FF2DF6200920081 /* Products */,
+				B95B2900CE1A842108BA2BCF /* Pods */,
+				28BAA32CF0CB4BFCD036F841 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = WannaFind;
 			sourceTree = "<group>";
 		};
+		B95B2900CE1A842108BA2BCF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AFC823B82A680F157ADF0002 /* Pods-WannaFind.debug.xcconfig */,
+				0F59E95CF867F8ED0A3111E8 /* Pods-WannaFind.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B80AD8B61FF2DF6300920081 /* Build configuration list for PBXNativeTarget "WannaFind" */;
 			buildPhases = (
+				98E2C5B671D8F9F7C8F17C0B /* [CP] Check Pods Manifest.lock */,
 				B80AD8A01FF2DF6200920081 /* Sources */,
 				B80AD8A11FF2DF6200920081 /* Frameworks */,
 				B80AD8A21FF2DF6200920081 /* Resources */,
+				7DC1763323CF9593D59CC735 /* [CP] Embed Pods Frameworks */,
+				1673E25AC3C50172375DF40E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,61 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1673E25AC3C50172375DF40E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WannaFind/Pods-WannaFind-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WannaFind/Pods-WannaFind-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DC1763323CF9593D59CC735 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WannaFind/Pods-WannaFind-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98E2C5B671D8F9F7C8F17C0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WannaFind-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B80AD8A01FF2DF6200920081 /* Sources */ = {
@@ -272,11 +354,13 @@
 		};
 		B80AD8B71FF2DF6300920081 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFC823B82A680F157ADF0002 /* Pods-WannaFind.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F3CZT542G;
 				INFOPLIST_FILE = WannaFind/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "luis-santiago.com.WannaFind";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -287,11 +371,13 @@
 		};
 		B80AD8B81FF2DF6300920081 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F59E95CF867F8ED0A3111E8 /* Pods-WannaFind.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F3CZT542G;
 				INFOPLIST_FILE = WannaFind/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "luis-santiago.com.WannaFind";
 				PRODUCT_NAME = "$(TARGET_NAME)";
