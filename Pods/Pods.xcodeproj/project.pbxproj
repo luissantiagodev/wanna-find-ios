@@ -7,141 +7,166 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8329A53F8228B354BC16F4FCCE260665 /* Pods-WannaFind-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FFEC99CAAD3661606EAA8BD596627B /* Pods-WannaFind-dummy.m */; };
-		B2442E8673712E54BC4D3D7D516C0B2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		F274F14AF144FDE752BA845AB53BDBBB /* Pods-WannaFind-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA78E9461E5CCD686FB604247B48E73 /* Pods-WannaFind-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A113A2FC5F91269AB55DF9FA683015F /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A94509325978535D27100783B5EE /* Floaty.swift */; };
+		1982E7ED9231E948A558799362FEA8B3 /* Floaty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07656ECEFB223376B03EB1D914E703D6 /* Floaty-dummy.m */; };
+		228DB0EDF117855AAB4B0211734D86F4 /* Pods-WannaFind-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FFEC99CAAD3661606EAA8BD596627B /* Pods-WannaFind-dummy.m */; };
+		2F30735E6BB3BB6DD455904BE0452769 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		31DEB9C293D974C0014F52E7853C3E0B /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207552CCD060113F89CA9804405800BF /* FloatyItem.swift */; };
+		530356FC11C4F4A1F641A30F65C5684F /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D399E4FED4BB454B1DB0B6DAFD87ED /* FloatyWindow.swift */; };
+		53128CE67782952E5850E7D1E1D728AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		7060C75B128119AE663619DCED898CF8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
+		7067387FF3974A5BA87F204F718C33F5 /* Floaty-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 63356C16579A760F32BD38DCAB5A06A5 /* Floaty-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E96697B51D3FD3DB5EB1BE3EF02B411 /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EFB5FF265191730A0E1D976BD4A93D /* FloatyManager.swift */; };
+		9054A1CA64F47D0BEE3744D146CD26A2 /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AA13DD9D0EE2B08332FAF5E894226 /* FloatyDelegate.swift */; };
+		9B2ABD17D4E275648241A855C3938807 /* Pods-WannaFind-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA78E9461E5CCD686FB604247B48E73 /* Pods-WannaFind-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5B4C3EE44C285ACF24E077895435175 /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EB9D607850212AA1557B2EC342BB6A /* FloatyViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D95A3C395AEB0896842781DE5FA8BB57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C123A74CD9D6CDA27160800BA68B01A;
+			remoteInfo = Floaty;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		08F1229163C7F5E61C7C4B361510F11C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
-		1C6200385182862E9168588E60B1CD37 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		07656ECEFB223376B03EB1D914E703D6 /* Floaty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Floaty-dummy.m"; sourceTree = "<group>"; };
+		1244ED3E111FAE2091475B7209C8215A /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		1BAA12582206769CC55DC005E8850A85 /* Floaty-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-prefix.pch"; sourceTree = "<group>"; };
+		207552CCD060113F89CA9804405800BF /* FloatyItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyItem.swift; path = Sources/FloatyItem.swift; sourceTree = "<group>"; };
+		2544142892CB974FB107F5A61CA361F5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C00758A4DCE8F419B5550CF1512D2E9 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
 		3FA78E9461E5CCD686FB604247B48E73 /* Pods-WannaFind-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WannaFind-umbrella.h"; sourceTree = "<group>"; };
 		40C7919FA0594B96F74DF364294AD505 /* Pods-WannaFind.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-WannaFind.modulemap"; sourceTree = "<group>"; };
 		41FFEC99CAAD3661606EAA8BD596627B /* Pods-WannaFind-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WannaFind-dummy.m"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5077A94509325978535D27100783B5EE /* Floaty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Floaty.swift; path = Sources/Floaty.swift; sourceTree = "<group>"; };
+		51C49AB8CD4E12C11C14B8AC80CB2421 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		63356C16579A760F32BD38DCAB5A06A5 /* Floaty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-umbrella.h"; sourceTree = "<group>"; };
 		6BAA5624770BE8CFDE5C72EA48C62FD5 /* Pods-WannaFind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WannaFind.debug.xcconfig"; sourceTree = "<group>"; };
-		70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		7353E561CD233E6EA12F346274EE2878 /* Floaty.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Floaty.xcconfig; sourceTree = "<group>"; };
+		74788524144BB443861CE141F63A8B30 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		840AA13DD9D0EE2B08332FAF5E894226 /* FloatyDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyDelegate.swift; path = Sources/FloatyDelegate.swift; sourceTree = "<group>"; };
+		8825429807C5936C2ECF231C2D9905A6 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A65ED65616C5861E2765BDC60AAAF910 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		A7D399E4FED4BB454B1DB0B6DAFD87ED /* FloatyWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyWindow.swift; path = Sources/FloatyWindow.swift; sourceTree = "<group>"; };
 		A7E1C37743FD8A71BFF124FC807504CF /* Pods-WannaFind-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WannaFind-resources.sh"; sourceTree = "<group>"; };
-		A92DFDA40F47C0FD221B2872C31099A1 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
-		B22C69ADCE7C9D529F11B17B4EF5E065 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
-		C22F9402A88B50EAA68840BF66E4BFF8 /* Pods_WannaFind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WannaFind.framework; path = "Pods-WannaFind.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5179AA78EA755E9723B5374A0C7171C /* Pods_WannaFind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WannaFind.framework; path = "Pods-WannaFind.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C971E799FC643B9477A34A3EA7ACDB9B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DBBDF9A1FEAC2A763F9BBA5826E5B4FD /* Pods-WannaFind-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WannaFind-frameworks.sh"; sourceTree = "<group>"; };
 		DE789CB6638BDC67DCBD76E58581FC60 /* Pods-WannaFind-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WannaFind-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E9177A36324BB7FE31EE278097FFDCCC /* Floaty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Floaty.framework; path = Floaty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9EB9D607850212AA1557B2EC342BB6A /* FloatyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyViewController.swift; path = Sources/FloatyViewController.swift; sourceTree = "<group>"; };
+		ED49E0DA667C30A9F5856BEB2A33ADA1 /* Floaty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Floaty.modulemap; sourceTree = "<group>"; };
+		EDDA6B3F2DD3C101F806D450F1582870 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		F4EFB5FF265191730A0E1D976BD4A93D /* FloatyManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyManager.swift; path = Sources/FloatyManager.swift; sourceTree = "<group>"; };
 		F80B0A998B877BC18ECDF706E7BA5C5B /* Pods-WannaFind-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WannaFind-acknowledgements.plist"; sourceTree = "<group>"; };
 		FD709DACC11099666B587D87107C5520 /* Pods-WannaFind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WannaFind.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4CE17A9F8C58C065612D7B7CEF724005 /* Frameworks */ = {
+		C934F0912E0872CC3CED0443A0B5E8E1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2442E8673712E54BC4D3D7D516C0B2F /* Foundation.framework in Frameworks */,
+				53128CE67782952E5850E7D1E1D728AB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E91D449C74F3A7565170694D645F1052 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F30735E6BB3BB6DD455904BE0452769 /* Foundation.framework in Frameworks */,
+				7060C75B128119AE663619DCED898CF8 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00B63D9B3EBC8ECAFD5DA8C24F1A42DF /* GooglePlaces */ = {
+		0B498B0761A97709FF51DD17ED56326C /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				475420FA59EFC8377CF994A338979247 /* Frameworks */,
-				09DB508F39D8BE758EA4A7B9047268E9 /* Resources */,
+				9A698457D3378ECAB33732424BBC49BB /* Frameworks */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		150FE034F08CEDDF00306D4267760AFD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				51C49AB8CD4E12C11C14B8AC80CB2421 /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				438B396F6B4147076630CAEFE34282C1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		438B396F6B4147076630CAEFE34282C1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */,
+				B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		4ABD7F7668D838F99078B02AB45DA246 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA6B3F2DD3C101F806D450F1582870 /* GooglePlaces.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4EEDCDE7310782A7D7BCAD215E41693B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74788524144BB443861CE141F63A8B30 /* GooglePlaces.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		54B8A01A49AF238C06CFB26795CE2B7D /* GooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				4EEDCDE7310782A7D7BCAD215E41693B /* Frameworks */,
+				4ABD7F7668D838F99078B02AB45DA246 /* Resources */,
 			);
 			name = GooglePlaces;
 			path = GooglePlaces;
 			sourceTree = "<group>";
 		};
-		09DB508F39D8BE758EA4A7B9047268E9 /* Resources */ = {
+		7AE929C3FB17DADCED6DF81247FDF872 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A65ED65616C5861E2765BDC60AAAF910 /* GooglePlaces.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		26C94CF6FBD559155351548F2127E7DB /* GoogleMaps */ = {
-			isa = PBXGroup;
-			children = (
-				B2F22323EA3B1ADB4F96376E3F709A68 /* Base */,
-				488E301C4ACDDA928635C4886F5F6158 /* Maps */,
-			);
-			name = GoogleMaps;
-			path = GoogleMaps;
-			sourceTree = "<group>";
-		};
-		2724E52E29BB3A2066B0406098D91711 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C22F9402A88B50EAA68840BF66E4BFF8 /* Pods_WannaFind.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		343584E22C57489C672A8E6F731CB43A /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				1C6200385182862E9168588E60B1CD37 /* GoogleMaps.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		385FA015FFB9210F372AB1078B856AAB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				26C94CF6FBD559155351548F2127E7DB /* GoogleMaps */,
-				00B63D9B3EBC8ECAFD5DA8C24F1A42DF /* GooglePlaces */,
+				E265AAB56E671AE114E00CCC511CF6AE /* Floaty */,
+				FD5F7F6463D63AED9F39359B3C560F16 /* GoogleMaps */,
+				54B8A01A49AF238C06CFB26795CE2B7D /* GooglePlaces */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		475420FA59EFC8377CF994A338979247 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		488E301C4ACDDA928635C4886F5F6158 /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-				82CE66B3B7EC3F6274BF43A52FEEAE6E /* Frameworks */,
-				343584E22C57489C672A8E6F731CB43A /* Resources */,
-			);
-			name = Maps;
-			sourceTree = "<group>";
-		};
-		4CFA8C2E94378AFFDBA3DF92FBE7E3DC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B22C69ADCE7C9D529F11B17B4EF5E065 /* GoogleMapsBase.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				385FA015FFB9210F372AB1078B856AAB /* Pods */,
-				2724E52E29BB3A2066B0406098D91711 /* Products */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				7AE929C3FB17DADCED6DF81247FDF872 /* Pods */,
+				FDE95C018322D8E3411FB851EA4E7E15 /* Products */,
 				93DA804CB8FD6376CE90A7564E474E04 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		82CE66B3B7EC3F6274BF43A52FEEAE6E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				08F1229163C7F5E61C7C4B361510F11C /* GoogleMaps.framework */,
-				A92DFDA40F47C0FD221B2872C31099A1 /* GoogleMapsCore.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		93DA804CB8FD6376CE90A7564E474E04 /* Targets Support Files */ = {
@@ -152,28 +177,50 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		B2F22323EA3B1ADB4F96376E3F709A68 /* Base */ = {
+		9A698457D3378ECAB33732424BBC49BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4CFA8C2E94378AFFDBA3DF92FBE7E3DC /* Frameworks */,
-			);
-			name = Base;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+				1244ED3E111FAE2091475B7209C8215A /* GoogleMapsBase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+		B0D505E66998F023F753BDF264F7748B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+				ED49E0DA667C30A9F5856BEB2A33ADA1 /* Floaty.modulemap */,
+				7353E561CD233E6EA12F346274EE2878 /* Floaty.xcconfig */,
+				07656ECEFB223376B03EB1D914E703D6 /* Floaty-dummy.m */,
+				1BAA12582206769CC55DC005E8850A85 /* Floaty-prefix.pch */,
+				63356C16579A760F32BD38DCAB5A06A5 /* Floaty-umbrella.h */,
+				2544142892CB974FB107F5A61CA361F5 /* Info.plist */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/Floaty";
+			sourceTree = "<group>";
+		};
+		E265AAB56E671AE114E00CCC511CF6AE /* Floaty */ = {
+			isa = PBXGroup;
+			children = (
+				5077A94509325978535D27100783B5EE /* Floaty.swift */,
+				840AA13DD9D0EE2B08332FAF5E894226 /* FloatyDelegate.swift */,
+				207552CCD060113F89CA9804405800BF /* FloatyItem.swift */,
+				F4EFB5FF265191730A0E1D976BD4A93D /* FloatyManager.swift */,
+				E9EB9D607850212AA1557B2EC342BB6A /* FloatyViewController.swift */,
+				A7D399E4FED4BB454B1DB0B6DAFD87ED /* FloatyWindow.swift */,
+				B0D505E66998F023F753BDF264F7748B /* Support Files */,
+			);
+			name = Floaty;
+			path = Floaty;
+			sourceTree = "<group>";
+		};
+		E71E24FA2F1AA74B4F3E3D704D31EC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8825429807C5936C2ECF231C2D9905A6 /* GoogleMaps.framework */,
+				3C00758A4DCE8F419B5550CF1512D2E9 /* GoogleMapsCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		EBC8608F511AA53EA8C475D6923E2E89 /* Pods-WannaFind */ = {
@@ -194,35 +241,89 @@
 			path = "Target Support Files/Pods-WannaFind";
 			sourceTree = "<group>";
 		};
+		F2FFB6209B019270D389133011030D52 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				E71E24FA2F1AA74B4F3E3D704D31EC07 /* Frameworks */,
+				150FE034F08CEDDF00306D4267760AFD /* Resources */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		FD5F7F6463D63AED9F39359B3C560F16 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				0B498B0761A97709FF51DD17ED56326C /* Base */,
+				F2FFB6209B019270D389133011030D52 /* Maps */,
+			);
+			name = GoogleMaps;
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		FDE95C018322D8E3411FB851EA4E7E15 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9177A36324BB7FE31EE278097FFDCCC /* Floaty.framework */,
+				B5179AA78EA755E9723B5374A0C7171C /* Pods_WannaFind.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		68557400274FACD62816617505D22904 /* Headers */ = {
+		C5CF0B7DE7FB70AFDEB39856AE4423FA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F274F14AF144FDE752BA845AB53BDBBB /* Pods-WannaFind-umbrella.h in Headers */,
+				9B2ABD17D4E275648241A855C3938807 /* Pods-WannaFind-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC4B55F79F7EDF7665C0699A20731DE3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7067387FF3974A5BA87F204F718C33F5 /* Floaty-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		580D64FB33F9E333910A2195FB6B485A /* Pods-WannaFind */ = {
+		5C123A74CD9D6CDA27160800BA68B01A /* Floaty */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A585D40E77F626D7E05B0BC19A5670C1 /* Build configuration list for PBXNativeTarget "Pods-WannaFind" */;
+			buildConfigurationList = 11DD83B99F71D3E302573ED38372EA3B /* Build configuration list for PBXNativeTarget "Floaty" */;
 			buildPhases = (
-				F92F04DD05B5BA4CFA8631FBD639BF16 /* Sources */,
-				4CE17A9F8C58C065612D7B7CEF724005 /* Frameworks */,
-				68557400274FACD62816617505D22904 /* Headers */,
+				58D385880A221FD41E30877A347BC358 /* Sources */,
+				E91D449C74F3A7565170694D645F1052 /* Frameworks */,
+				DC4B55F79F7EDF7665C0699A20731DE3 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = Floaty;
+			productName = Floaty;
+			productReference = E9177A36324BB7FE31EE278097FFDCCC /* Floaty.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DC0DDD4D93E8AB23666BD892B7BCC1DD /* Pods-WannaFind */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16B78DCAF79A6CDFD842BE0C405B3F67 /* Build configuration list for PBXNativeTarget "Pods-WannaFind" */;
+			buildPhases = (
+				1E1AF39E9FA127D2B20E9686756C87E9 /* Sources */,
+				C934F0912E0872CC3CED0443A0B5E8E1 /* Frameworks */,
+				C5CF0B7DE7FB70AFDEB39856AE4423FA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				197FBA7955712FD90717CDC6A756814F /* PBXTargetDependency */,
+			);
 			name = "Pods-WannaFind";
 			productName = "Pods-WannaFind";
-			productReference = C22F9402A88B50EAA68840BF66E4BFF8 /* Pods_WannaFind.framework */;
+			productReference = B5179AA78EA755E9723B5374A0C7171C /* Pods_WannaFind.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -242,25 +343,49 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 2724E52E29BB3A2066B0406098D91711 /* Products */;
+			productRefGroup = FDE95C018322D8E3411FB851EA4E7E15 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				580D64FB33F9E333910A2195FB6B485A /* Pods-WannaFind */,
+				5C123A74CD9D6CDA27160800BA68B01A /* Floaty */,
+				DC0DDD4D93E8AB23666BD892B7BCC1DD /* Pods-WannaFind */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F92F04DD05B5BA4CFA8631FBD639BF16 /* Sources */ = {
+		1E1AF39E9FA127D2B20E9686756C87E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8329A53F8228B354BC16F4FCCE260665 /* Pods-WannaFind-dummy.m in Sources */,
+				228DB0EDF117855AAB4B0211734D86F4 /* Pods-WannaFind-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58D385880A221FD41E30877A347BC358 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1982E7ED9231E948A558799362FEA8B3 /* Floaty-dummy.m in Sources */,
+				0A113A2FC5F91269AB55DF9FA683015F /* Floaty.swift in Sources */,
+				9054A1CA64F47D0BEE3744D146CD26A2 /* FloatyDelegate.swift in Sources */,
+				31DEB9C293D974C0014F52E7853C3E0B /* FloatyItem.swift in Sources */,
+				8E96697B51D3FD3DB5EB1BE3EF02B411 /* FloatyManager.swift in Sources */,
+				F5B4C3EE44C285ACF24E077895435175 /* FloatyViewController.swift in Sources */,
+				530356FC11C4F4A1F641A30F65C5684F /* FloatyWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		197FBA7955712FD90717CDC6A756814F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Floaty;
+			target = 5C123A74CD9D6CDA27160800BA68B01A /* Floaty */;
+			targetProxy = D95A3C395AEB0896842781DE5FA8BB57 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		12C4B864767C59600DBFA238F1E2F8BC /* Release */ = {
@@ -315,6 +440,103 @@
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		170AB5C761177C756E452871F5948FD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7353E561CD233E6EA12F346274EE2878 /* Floaty.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Floaty/Floaty-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Floaty/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Floaty/Floaty.modulemap";
+				PRODUCT_NAME = Floaty;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		27FDF859F925DAA1E759E9E71392F217 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BAA5624770BE8CFDE5C72EA48C62FD5 /* Pods-WannaFind.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WannaFind/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WannaFind/Pods-WannaFind.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_WannaFind;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4C29DBCE921C61C3E9D588EE6F2A786C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7353E561CD233E6EA12F346274EE2878 /* Floaty.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Floaty/Floaty-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Floaty/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Floaty/Floaty.modulemap";
+				PRODUCT_NAME = Floaty;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -378,39 +600,7 @@
 			};
 			name = Debug;
 		};
-		B5D2749EF6054763990F729578E1C038 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BAA5624770BE8CFDE5C72EA48C62FD5 /* Pods-WannaFind.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WannaFind/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WannaFind/Pods-WannaFind.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_WannaFind;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		DDA6AAF7EE8FF1A434B9D968B57A853B /* Release */ = {
+		DB3B85833838AE63AECD30BF37F36BAC /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FD709DACC11099666B587D87107C5520 /* Pods-WannaFind.release.xcconfig */;
 			buildSettings = {
@@ -436,6 +626,7 @@
 				PRODUCT_NAME = Pods_WannaFind;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -446,20 +637,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		11DD83B99F71D3E302573ED38372EA3B /* Build configuration list for PBXNativeTarget "Floaty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				170AB5C761177C756E452871F5948FD9 /* Debug */,
+				4C29DBCE921C61C3E9D588EE6F2A786C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16B78DCAF79A6CDFD842BE0C405B3F67 /* Build configuration list for PBXNativeTarget "Pods-WannaFind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27FDF859F925DAA1E759E9E71392F217 /* Debug */,
+				DB3B85833838AE63AECD30BF37F36BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				59F0302F2371FCC6B73EF0A418D40734 /* Debug */,
 				12C4B864767C59600DBFA238F1E2F8BC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A585D40E77F626D7E05B0BC19A5670C1 /* Build configuration list for PBXNativeTarget "Pods-WannaFind" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5D2749EF6054763990F729578E1C038 /* Debug */,
-				DDA6AAF7EE8FF1A434B9D968B57A853B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

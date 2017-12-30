@@ -9,6 +9,8 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import Floaty
+
 
 class MapController: UIViewController {
 
@@ -46,6 +48,14 @@ class MapController: UIViewController {
         mapView = createMapView();
         loadMap()
         loadSearchBar()
+        loadFloatingActionButton()
+    }
+    
+    
+    func loadFloatingActionButton(){
+        let floaty = Floaty()
+        floaty.addItem("Hello, World!", icon: #imageLiteral(resourceName: "icons8-marker"))
+        self.view.addSubview(floaty)
     }
     
     func loadMap(){
