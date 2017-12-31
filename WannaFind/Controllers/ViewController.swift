@@ -20,7 +20,7 @@ class MapController: UIViewController {
     var mapView : GMSMapView?
     
     let imageMarker : UIImageView = {
-        let image = UIImageView(image: #imageLiteral(resourceName: "icons8-marker"));
+        let image = UIImageView(image: #imageLiteral(resourceName: "icons8-marker-100(1)"));
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         return image;
@@ -29,7 +29,7 @@ class MapController: UIViewController {
     func createMapView ()-> GMSMapView{
         let map = GMSMapView();
         map.translatesAutoresizingMaskIntoConstraints = false
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 18.134542, longitude: -94.498825, zoom: 15.0)
         map.camera = camera
         do {
             if let styleURL = Bundle.main.url(forResource: "map-style", withExtension: "json") {
@@ -41,6 +41,29 @@ class MapController: UIViewController {
         return map;
     }
     
+
+    func generateFloatingActionButton (handleLocationUpdate : @escaping (FloatyItem)->Void  , handleAlarmTravel : @escaping (FloatyItem)->Void) -> Floaty {
+        let fab = Floaty()
+        fab.addItem("", icon: #imageLiteral(resourceName: "icons8-marker-100(1)") , handler : handleLocationUpdate);
+        fab.addItem("", icon: #imageLiteral(resourceName: "icons8-alarm-clock-filled-100") , handler : handleAlarmTravel);
+        fab.buttonColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        fab.friendlyTap = true
+        fab.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1);
+        fab.openAnimationType = .slideUp
+        return fab
+    }
+    
+    
+    func handleLocationUpdate( _ : FloatyItem){
+        print("Update location");
+    }
+    
+    func handleTravelAlarm(_ : FloatyItem){
+        print("Set alarm");
+        let detailController = DetailRideController();
+        detailController.modalPresentationStyle = .custom
+        present(detailController, animated: true, completion: nil);
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +76,8 @@ class MapController: UIViewController {
     
     
     func loadFloatingActionButton(){
-        let floaty = Floaty()
-        floaty.addItem("Hello, World!", icon: #imageLiteral(resourceName: "icons8-marker"))
-        self.view.addSubview(floaty)
+        let floatingActionButton = generateFloatingActionButton(handleLocationUpdate: handleLocationUpdate, handleAlarmTravel: handleTravelAlarm)
+        self.view.addSubview(floatingActionButton)
     }
     
     func loadMap(){
