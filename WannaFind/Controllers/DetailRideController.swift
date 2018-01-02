@@ -24,31 +24,26 @@ class DetailRideController: UIViewController {
     let confirmButton : UIButton = {
         let button = UIButton(type : .system);
         button.translatesAutoresizingMaskIntoConstraints = false;
-        button.setTitle("Confirm", for: .normal);
+        button.setTitle("Confirm", for: .normal)
         return button
     }()
     
     func generateImageIcon(image : UIImage) -> UIImageView{
-        let image = UIImageView(image: image);
+        let image = UIImageView(image: image)
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }
     
-    func generateTextViews(textRaw : String) -> UITextView {
+    func generateTextViews(rawText : String) -> UITextView {
         let text = UITextView();
         text.translatesAutoresizingMaskIntoConstraints = false
-        text.text = textRaw
+        text.textAlignment = .left
+        text.font = UIFont.boldSystemFont(ofSize: 18)
+        text.font = UIFont.systemFont(ofSize: 18)
+        text.text = rawText
         return text
     }
     
-    let mainStackView : UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.translatesAutoresizingMaskIntoConstraints = false;
-        stack.distribution = .fillEqually
-        stack.alignment = .fill;
-        return stack
-    }()
     
     init(){
         super.init(nibName: nil, bundle: nil)
@@ -72,39 +67,47 @@ class DetailRideController: UIViewController {
     func setUpRootView(){
         menuView.backgroundColor = .white
         menuView.translatesAutoresizingMaskIntoConstraints = false
-        menuView.heightAnchor.constraint(equalToConstant: menuHeight).isActive = true
-        menuView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        menuView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
+        NSLayoutConstraint.activate([
+            menuView.heightAnchor.constraint(equalToConstant: menuHeight),
+            menuView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            menuView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+       
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DetailRideController.handleTap(_:)))
-        backgroundDropView.addGestureRecognizer(tapGesture);
+        backgroundDropView.addGestureRecognizer(tapGesture)
         setUpConfirmationTrip()
     }
     
     func setUpConfirmationTrip(){
-        menuView.addSubview(mainStackView);
-        mainStackView.topAnchor.constraint(equalTo: menuView.topAnchor, constant: 10).isActive = true
-        mainStackView.leadingAnchor.constraint(equalTo: menuView.leadingAnchor, constant: 10).isActive = true
-        mainStackView.trailingAnchor.constraint(equalTo: menuView.trailingAnchor, constant: 10).isActive = true
+        let firstImage = generateImageIcon(image: #imageLiteral(resourceName: "icons8-radar-100(1)"))
+        let firstText = generateTextViews(rawText: "Forum coatzacoalcos")
+        //Auto layout for the inner view for the textview and imageview
+        let originLocationContainer = UIView()
+        originLocationContainer.translatesAutoresizingMaskIntoConstraints = false
+
+        menuView.addSubview(originLocationContainer)
+        NSLayoutConstraint.activate([
+            originLocationContainer.topAnchor.constraint(equalTo: menuView.topAnchor),
+            originLocationContainer.heightAnchor.constraint(equalTo: menuView.heightAnchor),
+            originLocationContainer.centerXAnchor.constraint(equalTo: menuView.centerXAnchor),
+            ])
+        originLocationContainer.addSubview(firstImage)
+        firstImage.backgroundColor = .red;
+        originLocationContainer.addSubview(firstText)
+        firstText.backgroundColor = .blue;
         
-        
-        let firstImage = generateImageIcon(image: #imageLiteral(resourceName: "icons8-radar-100(1)"));
-        let firtText = generateTextViews(textRaw: "Forum coatzacoalcos");
-        
-        let firstRowContainer = UIView()
-        firstRowContainer.addSubview(firstImage)
-        firstRowContainer.addSubview(firtText)
-        
-        
-        
-        
-        let firstRow = UIStackView(arrangedSubviews: [firstImage,firtText]);
-        firstRow.axis = .horizontal;
-        firstRow.distribution = .fillEqually;
-        firstRow.translatesAutoresizingMaskIntoConstraints = false;
-        
-         mainStackView.addArrangedSubview(firstRow);
+        NSLayoutConstraint.activate([
+            firstImage.topAnchor.constraint(equalTo: originLocationContainer.topAnchor , constant : 10),
+            firstImage.widthAnchor.constraint(equalToConstant: 50),
+            firstImage.heightAnchor.constraint(equalToConstant: 50),
+            firstImage.leadingAnchor.constraint(equalTo: originLocationContainer.leadingAnchor , constant : 10),
+            firstText.topAnchor.constraint(equalTo: originLocationContainer.topAnchor , constant : 10),
+            firstText.leadingAnchor.constraint(equalTo: firstImage.trailingAnchor),
+            firstText.trailingAnchor.constraint(equalTo: originLocationContainer.trailingAnchor),
+            firstText.heightAnchor.constraint(equalTo: originLocationContainer.heightAnchor),
+            firstText.widthAnchor.constraint(equalToConstant: 200)
+        ])
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
