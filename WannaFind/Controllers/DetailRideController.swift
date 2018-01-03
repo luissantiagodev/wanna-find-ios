@@ -11,7 +11,8 @@ import UIKit
 class DetailRideController: UIViewController {
 
     let menuView = UIView()
-    let menuHeight = UIScreen.main.bounds.height / 4
+    let menuHeight = UIScreen.main.bounds.height / 3 + 20
+
     var isPresenting = false
     
     lazy var backgroundDropView : UIView = {
@@ -38,9 +39,10 @@ class DetailRideController: UIViewController {
         let text = UITextView();
         text.translatesAutoresizingMaskIntoConstraints = false
         text.textAlignment = .left
-        text.font = UIFont.boldSystemFont(ofSize: 18)
-        text.font = UIFont.systemFont(ofSize: 18)
+        text.font = UIFont.systemFont(ofSize: 16)
         text.text = rawText
+        text.isEditable = false
+        text.isSelectable = false
         return text
     }
     
@@ -80,34 +82,69 @@ class DetailRideController: UIViewController {
     }
     
     func setUpConfirmationTrip(){
-        let firstImage = generateImageIcon(image: #imageLiteral(resourceName: "icons8-radar-100(1)"))
-        let firstText = generateTextViews(rawText: "Forum coatzacoalcos")
+        let originLocationImage = generateImageIcon(image: #imageLiteral(resourceName: "icons8-radar-100(1)"))
+        let originLocationText = generateTextViews(rawText: "Forum coatzacoalcos")
         //Auto layout for the inner view for the textview and imageview
         let originLocationContainer = UIView()
         originLocationContainer.translatesAutoresizingMaskIntoConstraints = false
 
         menuView.addSubview(originLocationContainer)
         NSLayoutConstraint.activate([
-            originLocationContainer.topAnchor.constraint(equalTo: menuView.topAnchor),
-            originLocationContainer.heightAnchor.constraint(equalTo: menuView.heightAnchor),
+            originLocationContainer.topAnchor.constraint(equalTo: menuView.topAnchor , constant : 10),
+            originLocationContainer.heightAnchor.constraint(equalToConstant: menuHeight / 3),
             originLocationContainer.centerXAnchor.constraint(equalTo: menuView.centerXAnchor),
+            originLocationContainer.leadingAnchor.constraint(equalTo: menuView.leadingAnchor, constant: 10),
             ])
-        originLocationContainer.addSubview(firstImage)
-        firstImage.backgroundColor = .red;
-        originLocationContainer.addSubview(firstText)
-        firstText.backgroundColor = .blue;
+        originLocationContainer.addSubview(originLocationImage)
+        originLocationContainer.addSubview(originLocationText)
+        
         
         NSLayoutConstraint.activate([
-            firstImage.topAnchor.constraint(equalTo: originLocationContainer.topAnchor , constant : 10),
-            firstImage.widthAnchor.constraint(equalToConstant: 50),
-            firstImage.heightAnchor.constraint(equalToConstant: 50),
-            firstImage.leadingAnchor.constraint(equalTo: originLocationContainer.leadingAnchor , constant : 10),
-            firstText.topAnchor.constraint(equalTo: originLocationContainer.topAnchor , constant : 10),
-            firstText.leadingAnchor.constraint(equalTo: firstImage.trailingAnchor),
-            firstText.trailingAnchor.constraint(equalTo: originLocationContainer.trailingAnchor),
-            firstText.heightAnchor.constraint(equalTo: originLocationContainer.heightAnchor),
-            firstText.widthAnchor.constraint(equalToConstant: 200)
+            originLocationImage.topAnchor.constraint(equalTo: originLocationContainer.topAnchor , constant : 10),
+            originLocationImage.widthAnchor.constraint(equalToConstant: 30),
+            originLocationImage.heightAnchor.constraint(equalToConstant: 30),
+            originLocationImage.leadingAnchor.constraint(equalTo: originLocationContainer.leadingAnchor , constant : 2),
+            originLocationText.topAnchor.constraint(equalTo: originLocationContainer.topAnchor , constant : 5),
+            originLocationText.leadingAnchor.constraint(equalTo: originLocationImage.trailingAnchor , constant : 5),
+            originLocationText.trailingAnchor.constraint(equalTo: originLocationContainer.trailingAnchor),
+            originLocationText.heightAnchor.constraint(equalToConstant : 50),
         ])
+        
+        //Second container for the destination
+        let destinationContainer = UIView()
+        destinationContainer.translatesAutoresizingMaskIntoConstraints = false
+       
+        menuView.addSubview(destinationContainer)
+        NSLayoutConstraint.activate([
+            destinationContainer.topAnchor.constraint(equalTo: originLocationContainer.bottomAnchor , constant : -5),
+            destinationContainer.heightAnchor.constraint(equalToConstant: menuHeight / 3),
+            destinationContainer.centerXAnchor.constraint(equalTo: menuView.centerXAnchor),
+            destinationContainer.leadingAnchor.constraint(equalTo: menuView.leadingAnchor, constant: 10)
+            ])
+        
+        let destinationIcon = generateImageIcon(image: #imageLiteral(resourceName: "icons8-marker-100(1)"))
+        let destinationText = generateTextViews(rawText: "Teotihuacan 502, colonia teresa morales")
+        
+        destinationContainer.addSubview(destinationIcon)
+        destinationContainer.addSubview(destinationText)
+        NSLayoutConstraint.activate([
+            destinationIcon.topAnchor.constraint(equalTo: destinationContainer.topAnchor , constant : 10),
+            destinationIcon.widthAnchor.constraint(equalToConstant: 30),
+            destinationIcon.heightAnchor.constraint(equalToConstant: 30),
+            destinationIcon.leadingAnchor.constraint(equalTo: destinationContainer.leadingAnchor , constant : 2),
+            destinationText.topAnchor.constraint(equalTo: destinationContainer.topAnchor , constant : 5),
+            destinationText.leadingAnchor.constraint(equalTo: destinationIcon.trailingAnchor , constant : 5),
+            destinationText.trailingAnchor.constraint(equalTo: destinationContainer.trailingAnchor),
+            destinationText.heightAnchor.constraint(equalToConstant : 50),
+            ])
+        
+        // Adding the confirm button
+        menuView.addSubview(confirmButton)
+        NSLayoutConstraint.activate([
+                confirmButton.centerXAnchor.constraint(equalTo: menuView.centerXAnchor),
+                confirmButton.topAnchor.constraint(equalTo: destinationContainer.bottomAnchor, constant: 10),
+                confirmButton.heightAnchor.constraint(equalToConstant: 30)
+            ])
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
