@@ -10,17 +10,28 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import Floaty
+import CoreLocation
 
 
-class MapController: UIViewController {
+class MapController: UIViewController , GMSMapViewDelegate{
 
     var resultsViewController: GMSAutocompleteResultsViewController?
+    
     var searchController: UISearchController?
+    
     var resultView: UITextView?
+    
     var mapView : GMSMapView?
     
+    var locationManager = CLLocationManager()
+    
+    var currentLocation: CLLocation?
+    
+    var placesClient : GMSPlacesClient!
+    
+    
     let imageMarker : UIImageView = {
-        let image = UIImageView(image: #imageLiteral(resourceName: "icons8-marker-100(1)"));
+        let image = UIImageView(image: #imageLiteral(resourceName: "icons8-marker-100(1)"))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         return image;
@@ -29,8 +40,11 @@ class MapController: UIViewController {
     func createMapView ()-> GMSMapView{
         let map = GMSMapView();
         map.translatesAutoresizingMaskIntoConstraints = false
-        let camera = GMSCameraPosition.camera(withLatitude: 18.134542, longitude: -94.498825, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 18.134542, longitude: -94.498825, zoom: 16.0)
         map.camera = camera
+        map.settings.zoomGestures = false
+        map.isMyLocationEnabled = true
+        
         do {
             if let styleURL = Bundle.main.url(forResource: "map-style", withExtension: "json") {
                 map.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
@@ -44,8 +58,7 @@ class MapController: UIViewController {
 
     func generateFloatingActionButton (handleLocationUpdate : @escaping (FloatyItem)->Void  , handleAlarmTravel : @escaping (FloatyItem)->Void) -> Floaty {
         let fab = Floaty()
-        fab.addItem("", icon: #imageLiteral(resourceName: "icons8-marker-100(1)") , handler : handleLocationUpdate);
-        fab.addItem("", icon: #imageLiteral(resourceName: "icons8-alarm-clock-filled-100") , handler : handleAlarmTravel);
+        fab.addItem("", icon: #imageLiteral(resourceName: "icons8-alarm-clock-filled-100") , handler : handleAlarmTravel)
         fab.buttonColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         fab.friendlyTap = true
         fab.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1);
@@ -55,25 +68,36 @@ class MapController: UIViewController {
     
     
     func handleLocationUpdate( _ : FloatyItem){
-        print("Update location");
+        print("Update location")
     }
     
     func handleTravelAlarm(_ : FloatyItem){
-        print("Set alarm");
         let detailController = DetailRideController();
+        //TODO : Get the location acording to the marker
         detailController.modalPresentationStyle = .custom
-        present(detailController, animated: true, completion: nil);
+        present(detailController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadNavBar()
-        mapView = createMapView();
+        mapView = createMapView()
         loadMap()
         loadSearchBar()
         loadFloatingActionButton()
+        loadLocation()
     }
     
+    
+    func loadLocation(){
+        //MARK : Initialize the location manager
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.distanceFilter = 50
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+        placesClient = GMSPlacesClient.shared()
+    }
     
     func loadFloatingActionButton(){
         let floatingActionButton = generateFloatingActionButton(handleLocationUpdate: handleLocationUpdate, handleAlarmTravel: handleTravelAlarm)
@@ -92,7 +116,13 @@ class MapController: UIViewController {
             imageMarker.centerXAnchor.constraint(equalTo: mapView.centerXAnchor).isActive = true;
             imageMarker.centerYAnchor.constraint(equalTo: mapView.centerYAnchor).isActive = true;
             imageMarker.heightAnchor.constraint(equalToConstant: 50).isActive = true;
+            mapView.delegate = self
         }
+    }
+    
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        let coordinate = mapView.projection.coordinate(for: imageMarker.center)
+        print("latitude " + "\(coordinate.latitude)" + " longitude " + "\(coordinate.longitude)")
     }
     
     func loadSearchBar(){
@@ -100,7 +130,6 @@ class MapController: UIViewController {
         resultsViewController?.delegate = self as? GMSAutocompleteResultsViewControllerDelegate
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
-        
         
         let subView = UIView();
         let searchBar = searchController?.searchBar;
@@ -136,6 +165,52 @@ class MapController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    
+
+}
+
+extension MapController : CLLocationManagerDelegate{
+    // Handle incoming location events.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location: CLLocation = locations.last!
+        print("Location: \(location)")
+        
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+                                              longitude: location.coordinate.longitude,
+                                              zoom: 15.0)
+        
+        if (mapView?.isHidden)! {
+            mapView?.isHidden = false
+            mapView?.camera = camera
+        } else {
+            mapView?.animate(to: camera)
+        }
+        
+    }
+    
+    // Handle authorization for the location manager.
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted:
+            print("Location access was restricted.")
+        case .denied:
+            print("User denied access to location.")
+            // Display the map using the default location.
+            mapView?.isHidden = false
+        case .notDetermined:
+            print("Location status not determined.")
+        case .authorizedAlways: fallthrough
+        case .authorizedWhenInUse:
+            print("Location status is OK.")
+        }
+    }
+    
+    // Handle location manager errors.
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
+        print("Error: \(error)")
     }
 
 }

@@ -14,6 +14,7 @@
 		B80AD8B21FF2DF6200920081 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B80AD8B01FF2DF6200920081 /* LaunchScreen.storyboard */; };
 		B80AD8BA1FF2EE2E00920081 /* map-style.json in Resources */ = {isa = PBXBuildFile; fileRef = B80AD8B91FF2EE2E00920081 /* map-style.json */; };
 		B824FD761FF830C400C32D87 /* DetailRideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824FD751FF830C400C32D87 /* DetailRideController.swift */; };
+		B8F3E8F91FFD613900610689 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8F3E8F81FFD613900610689 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B80AD8B31FF2DF6200920081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B80AD8B91FF2EE2E00920081 /* map-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "map-style.json"; sourceTree = "<group>"; };
 		B824FD751FF830C400C32D87 /* DetailRideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRideController.swift; sourceTree = "<group>"; };
+		B8F3E8F81FFD613900610689 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8F3E8F91FFD613900610689 /* CoreLocation.framework in Frameworks */,
 				991CCC4D117D7AFEFFA22E77 /* Pods_WannaFind.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +48,7 @@
 		28BAA32CF0CB4BFCD036F841 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8F3E8F81FFD613900610689 /* CoreLocation.framework */,
 				5BF23EA63765664E7C76D9DC /* Pods_WannaFind.framework */,
 			);
 			name = Frameworks;
