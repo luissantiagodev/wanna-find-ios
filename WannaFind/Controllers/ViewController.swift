@@ -29,6 +29,10 @@ class MapController: UIViewController , GMSMapViewDelegate{
     
     var placesClient : GMSPlacesClient!
     
+    var userLocation : CLLocationCoordinate2D?
+    
+    var cameraZoom : Float = 17.0
+    
     
     let imageMarker : UIImageView = {
         let image = UIImageView(image: #imageLiteral(resourceName: "icons8-marker-100(1)"))
@@ -40,7 +44,7 @@ class MapController: UIViewController , GMSMapViewDelegate{
     func createMapView ()-> GMSMapView{
         let map = GMSMapView();
         map.translatesAutoresizingMaskIntoConstraints = false
-        let camera = GMSCameraPosition.camera(withLatitude: 18.134542, longitude: -94.498825, zoom: 16.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 18.134542, longitude: -94.498825, zoom: cameraZoom)
         map.camera = camera
         map.settings.zoomGestures = false
         map.isMyLocationEnabled = true
@@ -76,6 +80,10 @@ class MapController: UIViewController , GMSMapViewDelegate{
         //TODO : Get the location acording to the marker
         detailController.modalPresentationStyle = .custom
         present(detailController, animated: true, completion: nil)
+        if let clientLocation = userLocation {
+            requestAddress(location: clientLocation)
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -123,8 +131,10 @@ class MapController: UIViewController , GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         let coordinate = mapView.projection.coordinate(for: imageMarker.center)
         print("latitude " + "\(coordinate.latitude)" + " longitude " + "\(coordinate.longitude)")
+        userLocation = coordinate
     }
     
+
     func loadSearchBar(){
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self as? GMSAutocompleteResultsViewControllerDelegate
@@ -179,7 +189,7 @@ extension MapController : CLLocationManagerDelegate{
         
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
-                                              zoom: 15.0)
+                                              zoom: cameraZoom)
         
         if (mapView?.isHidden)! {
             mapView?.isHidden = false

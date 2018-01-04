@@ -14,6 +14,7 @@
 		B80AD8B21FF2DF6200920081 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B80AD8B01FF2DF6200920081 /* LaunchScreen.storyboard */; };
 		B80AD8BA1FF2EE2E00920081 /* map-style.json in Resources */ = {isa = PBXBuildFile; fileRef = B80AD8B91FF2EE2E00920081 /* map-style.json */; };
 		B824FD761FF830C400C32D87 /* DetailRideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824FD751FF830C400C32D87 /* DetailRideController.swift */; };
+		B8A29CAA1FFD99CB0077A08A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A29CA91FFD99CB0077A08A /* Address.swift */; };
 		B8F3E8F91FFD613900610689 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8F3E8F81FFD613900610689 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		B80AD8B31FF2DF6200920081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B80AD8B91FF2EE2E00920081 /* map-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "map-style.json"; sourceTree = "<group>"; };
 		B824FD751FF830C400C32D87 /* DetailRideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRideController.swift; sourceTree = "<group>"; };
+		B8A29CA91FFD99CB0077A08A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		B8F3E8F81FFD613900610689 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -57,6 +59,7 @@
 		B80AD89B1FF2DF6200920081 = {
 			isa = PBXGroup;
 			children = (
+				B8A29CA81FFD995E0077A08A /* Models */,
 				B80AD8A61FF2DF6200920081 /* WannaFind */,
 				B80AD8A51FF2DF6200920081 /* Products */,
 				B95B2900CE1A842108BA2BCF /* Pods */,
@@ -92,6 +95,14 @@
 				B824FD751FF830C400C32D87 /* DetailRideController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B8A29CA81FFD995E0077A08A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B8A29CA91FFD99CB0077A08A /* Address.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B95B2900CE1A842108BA2BCF /* Pods */ = {
@@ -238,6 +249,7 @@
 			files = (
 				B80AD8AA1FF2DF6200920081 /* ViewController.swift in Sources */,
 				B824FD761FF830C400C32D87 /* DetailRideController.swift in Sources */,
+				B8A29CAA1FFD99CB0077A08A /* Address.swift in Sources */,
 				B80AD8A81FF2DF6200920081 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
