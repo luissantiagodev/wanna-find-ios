@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import CoreLocation
+import PromiseKit
 
 class DetailRideController: UIViewController {
 
     let menuView = UIView()
+    
     let menuHeight = UIScreen.main.bounds.height / 3 + 20
+    
+    var currentUser : User?
 
     var isPresenting = false
+    
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    var key = "AIzaSyDzq3y5GT0isqTsLhgLG-0U34sWGidIFTk"
     
     lazy var backgroundDropView : UIView = {
         let view = UIView(frame: self.view.bounds)
@@ -26,6 +35,9 @@ class DetailRideController: UIViewController {
         let button = UIButton(type : .system);
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.setTitle("Confirm", for: .normal)
+        button.backgroundColor = UIColor(white: 0.96, alpha: 1)
+        button.layer.cornerRadius = 5
+        button.layer.masksToBounds = true
         return button
     }()
     
@@ -35,17 +47,51 @@ class DetailRideController: UIViewController {
         return image
     }
     
-    func generateTextViews(rawText : String) -> UITextView {
+    func setUpIndicatorView(){
+        menuView.addSubview(activityIndicator)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerXAnchor.constraint(equalTo: menuView.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: menuView.centerYAnchor).isActive = true
+        originLocationContainer.isHidden = true
+        destinationContainer.isHidden = true
+        confirmButton.isHidden = true
+        activityIndicator.startAnimating()
+    }
+    
+    let originLocationText : UITextView = {
         let text = UITextView();
         text.translatesAutoresizingMaskIntoConstraints = false
         text.textAlignment = .left
         text.font = UIFont.systemFont(ofSize: 16)
-        text.text = rawText
         text.isEditable = false
         text.isSelectable = false
         return text
-    }
+    }()
     
+    
+    let destinationText : UITextView = {
+        let text = UITextView();
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.textAlignment = .left
+        text.font = UIFont.systemFont(ofSize: 16)
+        text.isEditable = false
+        text.isSelectable = false
+        return text
+    }()
+    
+    let originLocationContainer : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let destinationContainer : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     init(){
         super.init(nibName: nil, bundle: nil)
@@ -63,8 +109,26 @@ class DetailRideController: UIViewController {
         view.addSubview(backgroundDropView)
         view.addSubview(menuView)
         setUpRootView()
+        setUpIndicatorView();
+        firstly{
+          self.requestAddress(location: (self.currentUser?.originLocation)!)
+        }.then{(adrress) in
+          self.originLocationText.text = self.makeShortAddress(address : adrress)
+        }.then{
+          self.requestAddress(location: (self.currentUser?.destinationLocation)!)
+        }.then{(address) in
+            self.destinationText.text = self.makeShortAddress(address : address)
+        }.always {
+            self.stopAnimating()
+        }
     }
     
+    func stopAnimating(){
+        self.originLocationContainer.isHidden = false
+        self.destinationContainer.isHidden = false
+        self.confirmButton.isHidden = false
+        self.activityIndicator.stopAnimating()
+    }
     
     func setUpRootView(){
         menuView.backgroundColor = .white
@@ -83,11 +147,7 @@ class DetailRideController: UIViewController {
     
     func setUpConfirmationTrip(){
         let originLocationImage = generateImageIcon(image: #imageLiteral(resourceName: "icons8-radar-100(1)"))
-        let originLocationText = generateTextViews(rawText: "Forum coatzacoalcos")
         //Auto layout for the inner view for the textview and imageview
-        let originLocationContainer = UIView()
-        originLocationContainer.translatesAutoresizingMaskIntoConstraints = false
-
         menuView.addSubview(originLocationContainer)
         NSLayoutConstraint.activate([
             originLocationContainer.topAnchor.constraint(equalTo: menuView.topAnchor , constant : 10),
@@ -111,9 +171,6 @@ class DetailRideController: UIViewController {
         ])
         
         //Second container for the destination
-        let destinationContainer = UIView()
-        destinationContainer.translatesAutoresizingMaskIntoConstraints = false
-       
         menuView.addSubview(destinationContainer)
         NSLayoutConstraint.activate([
             destinationContainer.topAnchor.constraint(equalTo: originLocationContainer.bottomAnchor , constant : -5),
@@ -123,7 +180,6 @@ class DetailRideController: UIViewController {
             ])
         
         let destinationIcon = generateImageIcon(image: #imageLiteral(resourceName: "icons8-marker-100(1)"))
-        let destinationText = generateTextViews(rawText: "Teotihuacan 502, colonia teresa morales")
         
         destinationContainer.addSubview(destinationIcon)
         destinationContainer.addSubview(destinationText)
@@ -142,18 +198,37 @@ class DetailRideController: UIViewController {
         menuView.addSubview(confirmButton)
         NSLayoutConstraint.activate([
                 confirmButton.centerXAnchor.constraint(equalTo: menuView.centerXAnchor),
-                confirmButton.topAnchor.constraint(equalTo: destinationContainer.bottomAnchor, constant: 10),
-                confirmButton.heightAnchor.constraint(equalToConstant: 30)
+                confirmButton.topAnchor.constraint(equalTo: destinationContainer.bottomAnchor, constant: -5),
+                confirmButton.heightAnchor.constraint(equalToConstant: 40),
+                confirmButton.widthAnchor.constraint(equalToConstant: 100)
             ])
+        
+        
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
     
+    public func requestAddress(location : CLLocationCoordinate2D)-> Promise<String> {
+        let urlString = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(location.latitude),\(location.longitude)&key=\(key)"
+        let url = URL(string: urlString)
+        return Promise<String> { address , error  in
+            let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if let error = error {
+                    print(error)
+                }
+                guard let data = data else { return }
+                let result = try? JSONDecoder().decode(Results.self, from: data)
+                if let finalResult = result  {
+                    let direction = finalResult.results[0].formatted_address
+                    return address(direction)
+                }
+            }
+            task.resume()
+        }
+    }
 }
-
-
 extension DetailRideController: UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
@@ -172,10 +247,8 @@ extension DetailRideController: UIViewControllerTransitioningDelegate, UIViewCon
         let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
         guard let toVC = toViewController else { return }
         isPresenting = !isPresenting
-        
         if isPresenting == true {
             containerView.addSubview(toVC.view)
-            
             menuView.frame.origin.y += menuHeight
             backgroundDropView.alpha = 0
             
@@ -195,3 +268,22 @@ extension DetailRideController: UIViewControllerTransitioningDelegate, UIViewCon
         }
     }
 }
+
+extension DetailRideController {
+    func makeShortAddress(address: String)->String {
+        let locations = address.components(separatedBy: ",")
+        let finalAddress = "\(locations[0]),\(locations[1])"
+        print(finalAddress)
+        return finalAddress
+    }
+}
+
+struct Address : Decodable {
+    var formatted_address : String
+}
+
+struct Results : Decodable {
+    var results : [Address]
+}
+
+

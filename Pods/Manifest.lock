@@ -7,17 +7,30 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.5.0):
     - GoogleMaps/Base (= 2.5.0)
+  - PromiseKit (4.5.0):
+    - PromiseKit/Foundation (= 4.5.0)
+    - PromiseKit/QuartzCore (= 4.5.0)
+    - PromiseKit/UIKit (= 4.5.0)
+  - PromiseKit/CorePromise (4.5.0)
+  - PromiseKit/Foundation (4.5.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.5.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.5.0):
+    - PromiseKit/CorePromise
 
 DEPENDENCIES:
   - Floaty (~> 3.0.0)
   - GoogleMaps
   - GooglePlaces
+  - PromiseKit (~> 4.4)
 
 SPEC CHECKSUMS:
   Floaty: bb7a353deee9ddcc14c584ca9c538efdc19669f2
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
+  PromiseKit: 9c1d9f6d7b65e3951a90bea7f407c56972be5d8e
 
-PODFILE CHECKSUM: 8b5481bd9740ead5fdbbc99b204a1fcdfa4b51af
+PODFILE CHECKSUM: 7bbafdc8a74f0b8126c1d656673f89d6f8309c88
 
 COCOAPODS: 1.3.1

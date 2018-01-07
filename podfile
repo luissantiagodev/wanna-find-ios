@@ -8,5 +8,6 @@ target 'WannaFind' do
   # Pods for WannaFind	
    pod 'GoogleMaps'
    pod 'GooglePlaces'
-   pod "Floaty", "~> 3.0.0" # Use version 4.0.0 for Swift 4.0	
+   pod "Floaty", "~> 3.0.0" # Use version 4.0.0 for Swift 4.0
+   pod "PromiseKit", "~> 4.4"
 end
