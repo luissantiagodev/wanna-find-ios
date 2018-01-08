@@ -15,6 +15,9 @@
 		B80AD8BA1FF2EE2E00920081 /* map-style.json in Resources */ = {isa = PBXBuildFile; fileRef = B80AD8B91FF2EE2E00920081 /* map-style.json */; };
 		B824FD761FF830C400C32D87 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824FD751FF830C400C32D87 /* ConfirmViewController.swift */; };
 		B8446B0D2003201E006F1881 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8446B0C2003201E006F1881 /* SplashScreen.swift */; };
+		B8955B4C2003E638006C1C18 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8955B4D2003E638006C1C18 /* PromiseKit.framework */; };
+		B8955B4E2003E663006C1C18 /* Floaty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8955B4F2003E663006C1C18 /* Floaty.framework */; };
+		B8955B502003E66D006C1C18 /* RevealingSplashView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8955B512003E66D006C1C18 /* RevealingSplashView.framework */; };
 		B8A29CBA1FFFFC4B0077A08A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A29CB91FFFFC4B0077A08A /* User.swift */; };
 		B8A29CBD1FFFFCDC0077A08A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A29CBC1FFFFCDC0077A08A /* UserViewModel.swift */; };
 		B8A29CBF1FFFFCF40077A08A /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A29CBE1FFFFCF40077A08A /* Constraints.swift */; };
@@ -34,6 +37,10 @@
 		B80AD8B91FF2EE2E00920081 /* map-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "map-style.json"; sourceTree = "<group>"; };
 		B824FD751FF830C400C32D87 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		B8446B0C2003201E006F1881 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		B8955B4B2003E435006C1C18 /* RevealingSplashView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RevealingSplashView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8955B4D2003E638006C1C18 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8955B4F2003E663006C1C18 /* Floaty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Floaty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8955B512003E66D006C1C18 /* RevealingSplashView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RevealingSplashView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A29CB91FFFFC4B0077A08A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B8A29CBC1FFFFCDC0077A08A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		B8A29CBE1FFFFCF40077A08A /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
@@ -45,6 +52,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8955B502003E66D006C1C18 /* RevealingSplashView.framework in Frameworks */,
+				B8955B4E2003E663006C1C18 /* Floaty.framework in Frameworks */,
+				B8955B4C2003E638006C1C18 /* PromiseKit.framework in Frameworks */,
 				B8F3E8F91FFD613900610689 /* CoreLocation.framework in Frameworks */,
 				991CCC4D117D7AFEFFA22E77 /* Pods_WannaFind.framework in Frameworks */,
 			);
@@ -56,6 +66,10 @@
 		28BAA32CF0CB4BFCD036F841 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8955B512003E66D006C1C18 /* RevealingSplashView.framework */,
+				B8955B4F2003E663006C1C18 /* Floaty.framework */,
+				B8955B4D2003E638006C1C18 /* PromiseKit.framework */,
+				B8955B4B2003E435006C1C18 /* RevealingSplashView.framework */,
 				B8F3E8F81FFD613900610689 /* CoreLocation.framework */,
 				5BF23EA63765664E7C76D9DC /* Pods_WannaFind.framework */,
 			);
