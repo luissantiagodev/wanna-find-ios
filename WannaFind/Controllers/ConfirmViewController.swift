@@ -212,6 +212,7 @@ class DetailRideController: UIViewController {
     
     public func requestAddress(location : CLLocationCoordinate2D)-> Promise<String> {
         let urlString = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(location.latitude),\(location.longitude)&key=\(key)"
+        print(urlString)
         let url = URL(string: urlString)
         return Promise<String> { address , error  in
             let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
