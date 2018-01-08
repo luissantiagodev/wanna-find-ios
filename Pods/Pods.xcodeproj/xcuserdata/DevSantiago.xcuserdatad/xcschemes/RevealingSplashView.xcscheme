@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '521AA781AF1542BB2C59BF511FFEA11C'
-               BlueprintName = 'PromiseKit'
+               BlueprintIdentifier = '01FDA04550A1AD51C9BA82DA253FCFD4'
+               BlueprintName = 'RevealingSplashView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'PromiseKit.framework'>
+               BuildableName = 'RevealingSplashView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -14,6 +14,7 @@
 		B80AD8B21FF2DF6200920081 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B80AD8B01FF2DF6200920081 /* LaunchScreen.storyboard */; };
 		B80AD8BA1FF2EE2E00920081 /* map-style.json in Resources */ = {isa = PBXBuildFile; fileRef = B80AD8B91FF2EE2E00920081 /* map-style.json */; };
 		B824FD761FF830C400C32D87 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824FD751FF830C400C32D87 /* ConfirmViewController.swift */; };
+		B8446B0D2003201E006F1881 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8446B0C2003201E006F1881 /* SplashScreen.swift */; };
 		B8A29CBA1FFFFC4B0077A08A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A29CB91FFFFC4B0077A08A /* User.swift */; };
 		B8A29CBD1FFFFCDC0077A08A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A29CBC1FFFFCDC0077A08A /* UserViewModel.swift */; };
 		B8A29CBF1FFFFCF40077A08A /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A29CBE1FFFFCF40077A08A /* Constraints.swift */; };
@@ -32,6 +33,7 @@
 		B80AD8B31FF2DF6200920081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B80AD8B91FF2EE2E00920081 /* map-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "map-style.json"; sourceTree = "<group>"; };
 		B824FD751FF830C400C32D87 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		B8446B0C2003201E006F1881 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		B8A29CB91FFFFC4B0077A08A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B8A29CBC1FFFFCDC0077A08A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		B8A29CBE1FFFFCF40077A08A /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		B80AD8A61FF2DF6200920081 /* WannaFind */ = {
 			isa = PBXGroup;
 			children = (
+				B8446B0B20031FF8006F1881 /* Splashscreen */,
 				B8A29CBB1FFFFC570077A08A /* Delegate */,
 				B8A29CA81FFD995E0077A08A /* Models */,
 				B824FD741FF8309000C32D87 /* Controllers */,
@@ -100,6 +103,14 @@
 				B8A29CBE1FFFFCF40077A08A /* Constraints.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B8446B0B20031FF8006F1881 /* Splashscreen */ = {
+			isa = PBXGroup;
+			children = (
+				B8446B0C2003201E006F1881 /* SplashScreen.swift */,
+			);
+			path = Splashscreen;
 			sourceTree = "<group>";
 		};
 		B8A29CA81FFD995E0077A08A /* Models */ = {
@@ -227,11 +238,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-WannaFind/Pods-WannaFind-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -265,6 +278,7 @@
 			files = (
 				B80AD8AA1FF2DF6200920081 /* ViewController.swift in Sources */,
 				B8A29CBF1FFFFCF40077A08A /* Constraints.swift in Sources */,
+				B8446B0D2003201E006F1881 /* SplashScreen.swift in Sources */,
 				B8A29CBD1FFFFCDC0077A08A /* UserViewModel.swift in Sources */,
 				B824FD761FF830C400C32D87 /* ConfirmViewController.swift in Sources */,
 				B8A29CBA1FFFFC4B0077A08A /* User.swift in Sources */,
