@@ -22,7 +22,7 @@ class DetailRideController: UIViewController {
     
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
-    var key = "AIzaSyDzq3y5GT0isqTsLhgLG-0U34sWGidIFTk"
+    var delegateHandleControl : Delegate?
     
     lazy var backgroundDropView : UIView = {
         let view = UIView(frame: self.view.bounds)
@@ -38,6 +38,7 @@ class DetailRideController: UIViewController {
         button.backgroundColor = UIColor(white: 0.96, alpha: 1)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(handleDirectionSetUp), for: .touchUpInside)
         return button
     }()
     
@@ -202,8 +203,6 @@ class DetailRideController: UIViewController {
                 confirmButton.heightAnchor.constraint(equalToConstant: 40),
                 confirmButton.widthAnchor.constraint(equalToConstant: 100)
             ])
-        
-        
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
@@ -211,7 +210,7 @@ class DetailRideController: UIViewController {
     }
     
     public func requestAddress(location : CLLocationCoordinate2D)-> Promise<String> {
-        let urlString = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(location.latitude),\(location.longitude)&key=\(key)"
+        let urlString = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(location.latitude),\(location.longitude)&key=\(keyMap)"
         print(urlString)
         let url = URL(string: urlString)
         return Promise<String> { address , error  in
@@ -228,6 +227,11 @@ class DetailRideController: UIViewController {
             }
             task.resume()
         }
+    }
+    
+    @objc func handleDirectionSetUp (){
+        dismiss(animated: true, completion: nil)
+        delegateHandleControl?.onRideAccepted()
     }
 }
 extension DetailRideController: UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
@@ -287,4 +291,11 @@ struct Results : Decodable {
     var results : [Address]
 }
 
+extension UIViewController {
+    var keyMap : String{
+        get{
+            return "AIzaSyDzq3y5GT0isqTsLhgLG-0U34sWGidIFTk"
+        }
+    }
+}
 

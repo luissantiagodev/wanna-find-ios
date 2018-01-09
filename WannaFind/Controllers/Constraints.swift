@@ -84,6 +84,7 @@ extension MapController{
     func generateFloatingActionButton (handleLocationUpdate : @escaping (FloatyItem)->Void  , handleAlarmTravel : @escaping (FloatyItem)->Void) -> Floaty {
         let fab = Floaty()
         fab.addItem("", icon: #imageLiteral(resourceName: "icons8-alarm-clock-filled-100") , handler : handleAlarmTravel)
+        fab.addItem("", icon: #imageLiteral(resourceName: "icons8-marker-100(1)") , handler : handleLocationUpdate)
         fab.buttonColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         fab.friendlyTap = true
         fab.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1);
@@ -100,9 +101,7 @@ extension MapController{
     
     func createMapView ()-> GMSMapView{
         let map = GMSMapView();
-        map.translatesAutoresizingMaskIntoConstraints = false
-        let camera = GMSCameraPosition.camera(withLatitude: 18.134542, longitude: -94.498825, zoom: cameraZoom)
-        map.camera = camera
+        map.translatesAutoresizingMaskIntoConstraints = false        
         map.settings.zoomGestures = false
         map.isMyLocationEnabled = true
         

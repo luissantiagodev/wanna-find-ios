@@ -11,11 +11,11 @@ import GoogleMaps
 import GooglePlaces
 import Floaty
 import CoreLocation
-import RevealingSplashView
+import PromiseKit
 
-
-class MapController: UIViewController , GMSMapViewDelegate{
-
+class MapController: UIViewController , GMSMapViewDelegate , Delegate{
+    
+    
     var resultsViewController: GMSAutocompleteResultsViewController?
     
     var searchController: UISearchController?
@@ -30,6 +30,9 @@ class MapController: UIViewController , GMSMapViewDelegate{
     
     let userModalView = UserViewModel(User(origin: CLLocationCoordinate2D(), destination: CLLocationCoordinate2D()))
     
+    var updateViewForOnce = true
+    
+    
     
     let imageMarker : UIImageView = {
         let image = UIImageView(image: #imageLiteral(resourceName: "icons8-marker-100(1)"))
@@ -37,18 +40,45 @@ class MapController: UIViewController , GMSMapViewDelegate{
         image.contentMode = .scaleAspectFit
         return image;
     }()
-
-
-    func handleLocationUpdate( _ : FloatyItem){
-        print("Update location")
-    }
     
     func handleTravelAlarm(_ : FloatyItem){
-        let detailController = DetailRideController();
+        let detailController = DetailRideController()
         detailController.currentUser = userModalView.getCompleteInformation
         detailController.modalPresentationStyle = .custom
+        detailController.delegateHandleControl = self
         present(detailController, animated: true, completion: nil)
-        print("FINAL LOCATIONS\(userModalView.originUserLocation) \(userModalView.destinationLocation)")
+    }
+    
+    
+    func handleTrip(){
+        let ridingController = RidingController()
+//        ridingController.modalPresentationStyle = .custom
+//        present(ridingController, animated: true, completion: nil)
+        requestDirections()
+    }
+    
+    func requestDirections(){
+        firstly{
+            requestDirections(userFullLocation: userModalView.getCompleteInformation)
+            }.then{ polyline in
+            self.drawOnMap(polylineString: polyline)
+            }.always {
+                print("Directions done")
+        }
+    }
+    
+    func drawOnMap(polylineString : String){
+        let path = GMSPath.init(fromEncodedPath: polylineString)
+        let polyLine = GMSPolyline(path: path )
+        polyLine.strokeWidth = 4
+        polyLine.strokeColor = .blue
+        polyLine.map = mapView
+        let bounds = GMSCoordinateBounds(path: path!)
+        let update = GMSCameraUpdate.fit(bounds , with:UIEdgeInsetsMake(40, 90, 230, 100))
+        //We add the marker
+        let destinationMarker = GMSMarker(position: userModalView.destinationLocation)
+        mapView?.animate(with: update)
+        destinationMarker.map = mapView
     }
     
     override func viewDidLoad() {
@@ -60,30 +90,12 @@ class MapController: UIViewController , GMSMapViewDelegate{
         loadFloatingActionButton()
         loadLocation()
         startSplashView()
-        
     }
     
-    func startSplashView(){
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        let revealingSplashView = RevealingSplashView(iconImage: #imageLiteral(resourceName: "SplashIcon"),iconInitialSize: CGSize(width: 70, height: 70), backgroundColor: UIColor(red:0.11, green:0.56, blue:0.95, alpha:1.0))
-        revealingSplashView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(revealingSplashView)
-        revealingSplashView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true;
-        revealingSplashView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true;
-        revealingSplashView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true;
-        revealingSplashView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true;
-        revealingSplashView.useCustomIconColor = true
-        revealingSplashView.iconColor = UIColor.red
-        revealingSplashView.useCustomIconColor = false
-
-        revealingSplashView.startAnimation(){
-            print("Completed")
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
-        }
-    }
+   
     
     func loadFloatingActionButton(){
-        let floatingActionButton = generateFloatingActionButton(handleLocationUpdate: handleLocationUpdate, handleAlarmTravel: handleTravelAlarm)
+        let floatingActionButton = generateFloatingActionButton(handleLocationUpdate: updateCameraLocation, handleAlarmTravel: handleTravelAlarm)
         self.view.addSubview(floatingActionButton)
     }
     
@@ -93,16 +105,14 @@ class MapController: UIViewController , GMSMapViewDelegate{
         userModalView.destinationLocation = coordinate
     }
     
-}
-
-extension MapController : CLLocationManagerDelegate{
-    // Handle incoming location events.
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location: CLLocation = locations.last!
-        userModalView.originUserLocation = location.coordinate
-        
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                              longitude: location.coordinate.longitude,
+    func updateCameraLocation(_ : FloatyItem){
+        updateLocation()
+    }
+    
+    func updateLocation(){
+        let location = userModalView.originUserLocation
+        let camera = GMSCameraPosition.camera(withLatitude: location.latitude,
+                                              longitude: location.longitude,
                                               zoom: cameraZoom)
         if (mapView?.isHidden)! {
             mapView?.isHidden = false
@@ -110,7 +120,23 @@ extension MapController : CLLocationManagerDelegate{
         } else {
             mapView?.animate(to: camera)
         }
-        
+    }
+    
+    func onRideAccepted() {
+        imageMarker.isHidden = true
+        handleTrip()
+    }
+}
+
+extension MapController : CLLocationManagerDelegate{
+    // Handle incoming location events.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location: CLLocation = locations.last!
+        userModalView.originUserLocation = location.coordinate
+        if updateViewForOnce {
+            updateLocation()
+            updateViewForOnce = false
+        }
     }
     
     // Handle authorization for the location manager.
@@ -133,6 +159,38 @@ extension MapController : CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
+    }
+}
+
+
+extension MapController{
+    public func animateMapToZoomOut(){
+        mapView?.animate(toZoom: 16.4)
+    }
+    
+    public func requestDirections(userFullLocation : User)-> Promise<String> {
+        let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(userFullLocation.originLocation.latitude),\(userFullLocation.originLocation.longitude)&destination=\(userFullLocation.destinationLocation.latitude),\(userFullLocation.destinationLocation.longitude)&sensor=true&key=\(keyMap)"
+        print(urlString)
+        let url = URL(string: urlString)
+        print(url ?? "No link found")
+        return Promise<String> { dirrections , error  in
+            if let url = url {
+                let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    if let error = error {
+                        print(error)
+                    }
+                    guard let data = data else { return }
+                    let result = try? JSONDecoder().decode(Route.self, from: data)
+                    if let finalResult = result  {
+                        let polyLine = finalResult.routes[0].overview_polyline.points
+                        return dirrections(polyLine)
+                    }
+                }
+                task.resume()
+            }else{
+                print("There isn't a url formaly parsed")
+            }
+        }
     }
 }
 

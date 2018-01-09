@@ -19,3 +19,15 @@ struct User {
         self.destinationLocation = destination
     }
 }
+
+struct Route : Decodable {
+    var routes : [Directions]
+}
+
+struct Directions : Decodable {
+    var overview_polyline : Points
+}
+
+struct Points : Decodable {
+    var points : String
+}
