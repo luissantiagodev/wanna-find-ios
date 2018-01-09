@@ -25,7 +25,7 @@ extension MapController{
             mapView.addSubview(imageMarker)
             imageMarker.centerXAnchor.constraint(equalTo: mapView.centerXAnchor).isActive = true;
             imageMarker.centerYAnchor.constraint(equalTo: mapView.centerYAnchor).isActive = true;
-            imageMarker.heightAnchor.constraint(equalToConstant: 50).isActive = true;
+            imageMarker.heightAnchor.constraint(equalToConstant: 40).isActive = true;
             mapView.delegate = self
         }
     }

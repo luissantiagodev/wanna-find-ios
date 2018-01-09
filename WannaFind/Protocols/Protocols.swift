@@ -11,3 +11,7 @@ import Foundation
 protocol Delegate {
     func onRideAccepted()
 }
+
+protocol CancelDelegate {
+    func onRideCancel()
+}

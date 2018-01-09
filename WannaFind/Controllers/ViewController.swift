@@ -13,7 +13,7 @@ import Floaty
 import CoreLocation
 import PromiseKit
 
-class MapController: UIViewController , GMSMapViewDelegate , Delegate{
+class MapController: UIViewController , GMSMapViewDelegate , Delegate , CancelDelegate{
     
     
     var resultsViewController: GMSAutocompleteResultsViewController?
@@ -32,7 +32,9 @@ class MapController: UIViewController , GMSMapViewDelegate , Delegate{
     
     var updateViewForOnce = true
     
+    var polyLine : GMSPolyline?
     
+    var destinationMarker : GMSMarker?
     
     let imageMarker : UIImageView = {
         let image = UIImageView(image: #imageLiteral(resourceName: "icons8-marker-100(1)"))
@@ -52,8 +54,9 @@ class MapController: UIViewController , GMSMapViewDelegate , Delegate{
     
     func handleTrip(){
         let ridingController = RidingController()
-//        ridingController.modalPresentationStyle = .custom
-//        present(ridingController, animated: true, completion: nil)
+        ridingController.modalPresentationStyle = .custom
+        ridingController.cancelDelegate = self
+        present(ridingController, animated: true, completion: nil)
         requestDirections()
     }
     
@@ -69,16 +72,16 @@ class MapController: UIViewController , GMSMapViewDelegate , Delegate{
     
     func drawOnMap(polylineString : String){
         let path = GMSPath.init(fromEncodedPath: polylineString)
-        let polyLine = GMSPolyline(path: path )
-        polyLine.strokeWidth = 4
-        polyLine.strokeColor = .blue
-        polyLine.map = mapView
+        polyLine = GMSPolyline(path: path )
+        polyLine?.strokeWidth = 4
+        polyLine?.strokeColor = UIColor(red: 3, green: 169, blue: 244, alpha: 1)
+        polyLine?.map = mapView
         let bounds = GMSCoordinateBounds(path: path!)
-        let update = GMSCameraUpdate.fit(bounds , with:UIEdgeInsetsMake(40, 90, 230, 100))
+        let update = GMSCameraUpdate.fit(bounds , with:UIEdgeInsetsMake(30, 30,UIScreen.main.bounds.height / 4 , 30))
         //We add the marker
-        let destinationMarker = GMSMarker(position: userModalView.destinationLocation)
+        destinationMarker = GMSMarker(position: userModalView.destinationLocation)
         mapView?.animate(with: update)
-        destinationMarker.map = mapView
+        destinationMarker?.map = mapView
     }
     
     override func viewDidLoad() {
@@ -99,10 +102,20 @@ class MapController: UIViewController , GMSMapViewDelegate , Delegate{
         self.view.addSubview(floatingActionButton)
     }
     
+    func onRideCancel() {
+        imageMarker.isHidden = false
+        updateLocation()
+        removePolyLine()
+    }
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         let coordinate = mapView.projection.coordinate(for: imageMarker.center)
         userModalView.destinationLocation = coordinate
+    }
+    
+    func removePolyLine(){
+        polyLine?.map = nil
+        destinationMarker?.map = nil
     }
     
     func updateCameraLocation(_ : FloatyItem){
