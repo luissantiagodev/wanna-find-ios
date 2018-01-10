@@ -85,9 +85,10 @@ extension MapController{
         let fab = Floaty()
         fab.addItem("", icon: #imageLiteral(resourceName: "icons8-alarm-clock-filled-100") , handler : handleAlarmTravel)
         fab.addItem("", icon: #imageLiteral(resourceName: "icons8-marker-100(1)") , handler : handleLocationUpdate)
-        fab.buttonColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        fab.buttonColor = #colorLiteral(red: 0.003906628583, green: 0.4769868255, blue: 0.992308557, alpha: 1)
         fab.friendlyTap = true
         fab.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1);
+        fab.plusColor = .white
         fab.openAnimationType = .slideUp
         return fab
     }

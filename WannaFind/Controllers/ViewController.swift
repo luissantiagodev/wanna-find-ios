@@ -39,7 +39,7 @@ class MapController: UIViewController , GMSMapViewDelegate , Delegate , CancelDe
     var isRiding = false
     
     let imageMarker : UIImageView = {
-        let image = UIImageView(image: #imageLiteral(resourceName: "icons8-marker-100(1)"))
+        let image = UIImageView(image: #imageLiteral(resourceName: "newMarker"))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         return image;
@@ -77,12 +77,16 @@ class MapController: UIViewController , GMSMapViewDelegate , Delegate , CancelDe
         let path = GMSPath.init(fromEncodedPath: polylineString)
         polyLine = GMSPolyline(path: path )
         polyLine?.strokeWidth = 4
-        polyLine?.strokeColor = UIColor(red: 3, green: 169, blue: 244, alpha: 1)
+        polyLine?.strokeColor = #colorLiteral(red: 0.003906628583, green: 0.4769868255, blue: 0.992308557, alpha: 1)
         polyLine?.map = mapView
         let bounds = GMSCoordinateBounds(path: path!)
         let update = GMSCameraUpdate.fit(bounds , with:UIEdgeInsetsMake(paddinBottom + 20, 50, paddinBottom + 20  , 50))
         //We add the marker
+        let customImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        customImage.image =  #imageLiteral(resourceName: "icons8-marker-100(1)").withRenderingMode(.alwaysTemplate)
+        customImage.tintColor = .blue
         destinationMarker = GMSMarker(position: userModalView.destinationLocation)
+        destinationMarker?.iconView = customImage
         mapView?.animate(with: update)
         destinationMarker?.map = mapView
     }
@@ -97,8 +101,6 @@ class MapController: UIViewController , GMSMapViewDelegate , Delegate , CancelDe
         loadLocation()
         startSplashView()
     }
-    
-   
     
     func loadFloatingActionButton(){
         let floatingActionButton = generateFloatingActionButton(handleLocationUpdate: updateCameraLocation, handleAlarmTravel: handleTravelAlarm)
