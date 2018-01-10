@@ -36,6 +36,8 @@ class MapController: UIViewController , GMSMapViewDelegate , Delegate , CancelDe
     
     var destinationMarker : GMSMarker?
     
+    var isRiding = false
+    
     let imageMarker : UIImageView = {
         let image = UIImageView(image: #imageLiteral(resourceName: "icons8-marker-100(1)"))
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -71,13 +73,14 @@ class MapController: UIViewController , GMSMapViewDelegate , Delegate , CancelDe
     }
     
     func drawOnMap(polylineString : String){
+        let paddinBottom = UIScreen.main.bounds.height / 4
         let path = GMSPath.init(fromEncodedPath: polylineString)
         polyLine = GMSPolyline(path: path )
         polyLine?.strokeWidth = 4
         polyLine?.strokeColor = UIColor(red: 3, green: 169, blue: 244, alpha: 1)
         polyLine?.map = mapView
         let bounds = GMSCoordinateBounds(path: path!)
-        let update = GMSCameraUpdate.fit(bounds , with:UIEdgeInsetsMake(30, 30,UIScreen.main.bounds.height / 4 , 30))
+        let update = GMSCameraUpdate.fit(bounds , with:UIEdgeInsetsMake(paddinBottom + 20, 50, paddinBottom + 20  , 50))
         //We add the marker
         destinationMarker = GMSMarker(position: userModalView.destinationLocation)
         mapView?.animate(with: update)
@@ -138,6 +141,7 @@ class MapController: UIViewController , GMSMapViewDelegate , Delegate , CancelDe
     func onRideAccepted() {
         imageMarker.isHidden = true
         handleTrip()
+        isRiding = true
     }
 }
 
@@ -149,6 +153,15 @@ extension MapController : CLLocationManagerDelegate{
         if updateViewForOnce {
             updateLocation()
             updateViewForOnce = false
+        }
+        //MARK: Check if the user is in the trip, otherwise don't say nothing
+        if isRiding {
+            print("The user is in the trip")
+            if (GMSGeometryDistance(userModalView.originUserLocation, userModalView.destinationLocation)<50){
+                print("You have arrived to your destination")
+            }
+        }else{
+            print("The user is NOT in the trip")
         }
     }
     
